@@ -3,10 +3,10 @@ import mysql from 'mysql2/promise';
 async function connectToDatabase() {
     try {
         const conn = await mysql.createConnection({
-            host: 'localhost',
-            user: 'root',
-            password: '', // Asegúrate de agregar tu contraseña si tienes una
-            database: 'colegio',
+            host: '64.37.50.234',
+            user: 'info825_faenapp',
+            password: '$Mai6JT#F[j=', // Asegúrate de agregar tu contraseña si tienes una
+            database: 'info825_faenapp',
         });
         console.log('Conexión exitosa a la base de datos');
         return conn;
