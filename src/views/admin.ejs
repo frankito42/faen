@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bienvenido!</title>
+    <link rel="stylesheet" href="css/mdb.min.css">
+    <link rel="stylesheet" href="css/toastr.min.css">
+</head>
+<body>
+    <header>
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-body-tertiary">
+        <!-- Container wrapper -->
+        <div class="container">
+            <!-- Navbar brand -->
+            <a class="navbar-brand me-2" href="https://mdbgo.com/">
+            <img
+                src="images/logo.png"
+                height="30"
+                alt="F.A.E.N Logo"
+                loading="lazy"
+                style="margin-top: -1px;"
+            />
+            </a>
+
+            <!-- Toggle button -->
+            <button
+            data-mdb-collapse-init
+            class="navbar-toggler"
+            type="button"
+            data-mdb-target="#navbarButtonsExample"
+            aria-controls="navbarButtonsExample"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+            >
+            <i class="fas fa-bars"></i>
+            </button>
+
+            <!-- Collapsible wrapper -->
+            <div class="collapse navbar-collapse" id="navbarButtonsExample">
+            <!-- Left links -->
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                <a class="nav-link" href="#">F.A.E.N</a>
+                </li>
+            </ul>
+            <!-- Left links -->
+
+            <div class="d-flex align-items-center">
+                <button id="cerrarSesion" data-mdb-ripple-init type="button" class="btn btn-link px-3 me-2">
+                Cerrar sesion
+                </button>
+            </div>
+            </div>
+            <!-- Collapsible wrapper -->
+        </div>
+        <!-- Container wrapper -->
+        </nav>
+        <!-- Navbar -->
+    </header>
+    <div class="container mt-2">
+        <div class="row mb-2">
+            <div class="col-6">
+                <button type="button" data-mdb-modal-init data-mdb-target="#newPublicacion" class="btn btn-primary" data-mdb-ripple-init>Crear publicacion</button>
+            </div>
+        </div>
+        <div id="listarPublicaciones" class="row">
+          
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+    <!-- ////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+    <!-- //////////////////////////MODAL CREAR PUBLICACIONES/////////////////////////////////////////////////// -->
+        <!-- Modal -->
+        <div class="modal fade" id="newPublicacion" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+            <div class="modal-content">
+                <form id="nuevaPublicacion" method="post" enctype="multipart/form-data">
+                    <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel" style="background: #ededed;padding: 1%;border-radius: 5px;">Nueva publicacion</h5>
+                    <button type="button" class="btn-close" data-mdb-ripple-init data-mdb-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-12">
+                                <p style="background: #ededed;padding: 1%;border-radius: 5px;" class="text-center text-success">Complete los campos para crear una publicacion</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 mb-2">
+                                <div class="form-outline" data-mdb-input-init>
+                                    <input type="text" required id="titulo" name="titulo" class="form-control" />
+                                    <label class="form-label" for="titulo">Titulo</label>
+                                </div>
+                            </div>
+                            <div class="col-12 mb-2">
+                                <div class="form-outline" data-mdb-input-init>
+                                    <textarea required class="form-control" id="texto" name="texto" rows="4"></textarea>
+                                    <label class="form-label" for="texto">Message</label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label" for="archivo">Seleccione un archivo</label>
+                                <input type="file" name="archivo" class="form-control" id="archivo" />
+                            </div>
+                        </div>
+                    
+                    </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-mdb-ripple-init data-mdb-dismiss="modal">Cerrar</button>
+                    <button type="submit" class="btn btn-primary">Publicar</button>
+                    </div>
+                </form>
+            </div>
+            </div>
+        </div>
+    <!-- ////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+    <!-- ////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+    <!-- ////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+    <!-- ////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+     <!-- Modal -->
+    <div class="modal fade" id="modalEdit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <form id="formEdit">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h5 class="modal-title" style="background: #ededed;padding: 1%;border-radius: 5px;" id="exampleModalLabel">Editar publicacion</h5>
+                    <button type="button" class="btn-close" data-mdb-ripple-init data-mdb-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-12 mb-2" style="display:none;">
+                                <div class="form-outline" data-mdb-input-init>
+                                    <input type="text" id="idPxd" name="idPxd" class="form-control" />
+                                    <label class="form-label" for="idPxd">id</label>
+                                </div>
+                            </div>
+                            <div class="col-12 mb-2">
+                                <div class="form-outline" data-mdb-input-init>
+                                    <input type="text" id="tituloUp" name="tituloUp" class="form-control" />
+                                    <label class="form-label" for="tituloUp">Titulo</label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-outline" data-mdb-input-init>
+                                    <textarea class="form-control" id="textoUp" name="textoUp" rows="4"></textarea>
+                                    <label class="form-label" for="textoUp">Message</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-mdb-ripple-init data-mdb-dismiss="modal">Cerrar</button>
+                    <button type="submit" class="btn btn-primary" data-mdb-ripple-init>Guardar cambios</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- ////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+    <!-- ////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+    <!-- ////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+    <!-- ////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+    <div class="modal fade" id="eliminarP" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel" style="background: #dc4c64;padding: 1%;border-radius: 5px;color: white;">Eliminar</h5>
+              <button type="button" class="btn-close" data-mdb-ripple-init data-mdb-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div style="background: #ffeaea;" class="modal-body">
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <span class="text-danger">¿Estas seguro que deseas continuar?</span>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" onclick="eliminarPublicacion()" class="btn btn-danger" data-mdb-ripple-init>Si</button>
+                <button type="button" class="btn btn-secondary" data-mdb-ripple-init data-mdb-dismiss="modal">Cerrar</button>
+            </div>
+          </div>
+        </div>
+    <!-- ////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+    <!-- ////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+     
+    
+</body>
+<script src="js/jquery.js"></script>
+<script src="js/toastr.min.js"></script>
+<script src="js/mdb.umd.min.js"></script>
+<script src="js/admin.js"></script>
+</html>
